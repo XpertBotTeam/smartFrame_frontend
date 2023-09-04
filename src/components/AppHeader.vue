@@ -27,7 +27,7 @@ export default {
       <Router-link
         class="navbar-brand d-flex justify-content-center align-items-center vw-100"
         to="/"
-        ><img width="160" align="center" src="@/assets/logo.png"
+        ><img width="160" align="center" src="@/assets/logo.jpg"
       /></Router-link>
       <button
         class="navbar-toggler"
@@ -43,12 +43,12 @@ export default {
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <Router-link class="nav-link" aria-current="page" to="/"
+            <Router-link class="nav-link" aria-current="page" to="/contact"
               >CONTACT</Router-link
             >
           </li>
           <li class="nav-item">
-            <Router-link class="nav-link" aria-current="page" to="/"
+            <Router-link class="nav-link" aria-current="page" to="/cart"
               >CART</Router-link
             >
           </li>
