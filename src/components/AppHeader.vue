@@ -8,18 +8,18 @@ export default {
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
       <ul class="navbar-nav">
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <Router-link class="nav-link active" aria-current="page" to="/"
             >SELL</Router-link
           >
-        </li>
+        </li> -->
         <li class="nav-item">
-          <Router-link class="nav-link" aria-current="page" to="/"
+          <Router-link class="nav-link" aria-current="page" to="/gallery"
             >GALLERY</Router-link
           >
         </li>
         <li class="nav-item">
-          <Router-link class="nav-link" aria-current="page" to="/"
+          <Router-link class="nav-link" aria-current="page" to="/frames"
             >FRAMES</Router-link
           >
         </li>

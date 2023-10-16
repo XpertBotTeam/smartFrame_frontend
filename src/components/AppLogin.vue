@@ -21,6 +21,7 @@ export default {
           }
         );
         if (response.status === 200) {
+          console.log(response);
           localStorage.setItem(
             "user-info",
             JSON.stringify(response.data.success)
@@ -54,7 +55,7 @@ export default {
                 class="form-control"
                 id="email"
                 name="email"
-                placeholder="email@xpertbotacademy.online"
+                placeholder="email@mail.com"
                 required
               />
             </div>
