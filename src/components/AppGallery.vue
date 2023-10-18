@@ -1,13 +1,13 @@
 <template>
   <div class="container">
     <div class="mt-3">
-      <router-link to="/uploadartwork" class="btn btn-primary">Add artwork</router-link>
+      <router-link to="/uploadArt" class="btn btn-primary">Add Artwork</router-link>
     </div>
     <table class="table">
       <thead>
         <tr>
           <th>ID</th>
-          <th>artwork</th>
+          <th>Artwork</th>
           <th>Description</th>
           <th>Type</th>
           <th>Price</th>
@@ -36,8 +36,9 @@
             <button @click="toggleEdit(artwork.id)" class="btn btn-primary">
               {{ editingartworkId === artwork.id ? 'Cancel' : 'Edit' }}
             </button>
-            <button @click="confirmUpdate(artwork)" class="btn btn-primary" v-if="editingartworkId === artwork.id">Update</button>
-            <button @click="confirmDeleteartwork(artwork.id)" class="btn btn-danger">Delete</button>
+            <button @click="viewartworkDetails(artwork.id)" class="btn btn-primary m-2">View</button>
+            <button @click="confirmUpdate(artwork)" class="btn btn-primary  m-2" v-if="editingartworkId === artwork.id">Update</button>
+            <button @click="confirmDeleteartwork(artwork.id)" class="btn btn-danger ">Delete</button>
           </td>
         </tr>
       </tbody>
@@ -119,6 +120,9 @@ export default {
         }
       });
     },
+    async viewartworkDetails(artworkId) {
+      this.$router.push(`/gallery/${artworkId}`);
+  },
     async saveUpdatedartwork(artwork) {
       try {
         // Make an API call to update the artwork with the new data

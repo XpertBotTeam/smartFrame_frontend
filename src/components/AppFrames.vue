@@ -36,8 +36,9 @@
             <button @click="toggleEdit(frame.id)" class="btn btn-primary">
               {{ editingFrameId === frame.id ? 'Cancel' : 'Edit' }}
             </button>
-            <button @click="confirmUpdate(frame)" class="btn btn-primary" v-if="editingFrameId === frame.id">Update</button>
-            <button @click="confirmDeleteFrame(frame.id)" class="btn btn-danger">Delete</button>
+            <button @click="viewFrameDetails(frame.id)" class="btn btn-primary m-2">View</button>
+            <button @click="confirmUpdate(frame)" class="btn btn-primary  m-2" v-if="editingFrameId === frame.id">Update</button>
+            <button @click="confirmDeleteFrame(frame.id)" class="btn btn-danger ">Delete</button>
           </td>
         </tr>
       </tbody>
@@ -119,6 +120,9 @@ export default {
         }
       });
     },
+    async viewFrameDetails(frameId) {
+      this.$router.push(`/frames/${frameId}`);
+  },
     async saveUpdatedFrame(frame) {
       try {
         // Make an API call to update the frame with the new data

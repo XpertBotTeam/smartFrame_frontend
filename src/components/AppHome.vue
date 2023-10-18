@@ -8,5 +8,5 @@
 </script>
 
 <style scoped>
-/* Your custom CSS styles for this component can go here */
+
 </style>

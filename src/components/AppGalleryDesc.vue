@@ -1,40 +1,43 @@
 <template>
-    <div class="artwork-detail">
-      <img :src="artwork.image_path" alt="Artwork">
-      <p>{{ artwork.description }}</p>
-      <p>{{ artwork.picture_type }}</p>
-      <p>{{ artwork.price }}</p>
+  <div class="frame-details">   
+    <div>
+      <img :src="frame.image_path" class="m-4" alt="frame" height="150" width="150">
+      <p>Description: {{ frame.description }}</p>
+      <p>Type: {{ frame.frame_type }}</p>
+      <p>Price: {{ frame.price }}</p>
+      <!-- Display other frame details here -->
     </div>
-  </template>
-  
-  <script>
-  import axios from 'axios';
-  
-  export default {
-    data() {
-      return {
-        artwork: {},
-      };
+  </div>
+</template>
+
+<script>
+import axios from 'axios';
+
+export default {
+  name: 'AppFrameDesc',
+  data() {
+    return {
+      frame: {},
+    };
+  },
+  created() {
+    this.fetchFrameDetails();
+  },
+  methods: {
+    async fetchFrameDetails() {
+      const frameId = this.$route.params.id;
+      try {
+        console.log(frameId);
+        let response = await axios.get(`https://sfa.xpertbotacademy.online/api/frame/${frameId}`);
+        this.frame = response.data;
+        console.log(response.data);
+      } catch (error) {
+        console.error('Error fetching frame details:', error);
+      }
     },
-    created() {
-      this.fetchArtwork();
-    },
-    methods: {
-      async fetchArtwork() {
-        try {
-          const response = await axios.get('https://sfa.xpertbotacademy.online/api/pictures/${this.$route.params.id}'); // Replace with your API endpoint.
-          
-          console.log(response);
-          this.artwork = response.data;
-        } catch (error) {
-          console.error('Error fetching artwork:', error);
-        }
-      },
-    },
-  };
-  </script>
-  
-  <style scoped>
-  /* Add styling for the detail page */
-  </style>
-  
+  },
+};
+</script>
+
+<style scoped>
+</style>

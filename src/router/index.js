@@ -52,8 +52,9 @@ const router = createRouter({
       component: AppFrames,
     },
     {
-      path: "/frames/id",
+      path: "/frames/:id",
       name: "FrameDesc",
+      props: true,
       component: AppFrameDesc,
     },
     {
