@@ -19,7 +19,7 @@ export default {
     async register() {
       try {
         let response = await axios.post(
-          "https://sfa.xpertbotacademy.online/api/register",
+          "http://localhost:8000/api/register",
           {
             first_name: this.firstname,
             last_name: this.lastname,

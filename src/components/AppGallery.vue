@@ -87,7 +87,7 @@ export default {
   methods: {
     async fetchartworks() {
       try {
-        let response = await axios.get('https://sfa.xpertbotacademy.online/api/pictures');
+        let response = await axios.get('http://localhost:8000/api/pictures');
         this.artworks = response.data;
         console.log(response);
       } catch (error) {
@@ -133,7 +133,7 @@ export default {
           price: this.artworkEditData.price,
         };
         let response = await axios.put(
-          `https://sfa.xpertbotacademy.online/api/pictures/update/${artworkId}`,
+          `http://localhost:8000/api/pictures/update/${artworkId}`,
           updatedData
         );
         console.log(response);
@@ -154,7 +154,7 @@ export default {
     async deleteartwork(artworkId) {
       try {
         // Make a DELETE request to the API endpoint to delete the artwork
-        let response2 = await axios.get(`https://sfa.xpertbotacademy.online/api/pictures/delete/${artworkId}`);
+        let response2 = await axios.get(`http://localhost:8000/api/pictures/delete/${artworkId}`);
         console.log(response2);
 
         // Remove the deleted artwork from the list

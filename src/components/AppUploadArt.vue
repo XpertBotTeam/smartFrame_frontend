@@ -71,7 +71,7 @@ methods: {
 
     console.log(formData);
 
-    axios.post('https://sfa.xpertbotacademy.online/api/addPicture', formData, {
+    axios.post('http://localhost:8000/api/addPicture', formData, {
       headers: {
         'Content-Type': 'multipart/form-data;boundary=<calculated when request is sent>',
       },

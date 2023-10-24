@@ -23,6 +23,11 @@ export default {
             >FRAMES</Router-link
           >
         </li>
+        <li class="nav-item">
+          <Router-link class="nav-link" aria-current="page" to="/customize"
+            >Customize</Router-link
+          >
+        </li>
       </ul>
       <Router-link
         class="navbar-brand d-flex justify-content-center align-items-center vw-100"

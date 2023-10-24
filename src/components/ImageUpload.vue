@@ -19,7 +19,7 @@
 export default {
   data() {
     return {
-      imageUrl: '',
+      imageUrl: "",
       recommendations: [],
     };
   },
@@ -28,7 +28,7 @@ export default {
       // Handle image upload
       const file = event.target.files[0];
       this.imageUrl = URL.createObjectURL(file);
-      
+
       // Fetch recommendations (you'll need to implement this)
       this.fetchRecommendations();
     },

@@ -28,7 +28,7 @@ export default {
       const frameId = this.$route.params.id;
       try {
         console.log(frameId);
-        let response = await axios.get(`https://sfa.xpertbotacademy.online/api/frame/${frameId}`);
+        let response = await axios.get(`http://localhost:8000/api/frame/${frameId}`);
         this.frame = response.data;
         console.log(response.data);
       } catch (error) {
