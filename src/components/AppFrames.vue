@@ -1,4 +1,5 @@
 <template>
+  <AppHeaderAdmin />
   <div class="container">
     <div class="mt-3">
       <router-link to="/uploadFrame" class="btn btn-primary"
@@ -32,8 +33,17 @@
             <span v-if="editingFrameId !== frame.id">{{
               frame.frame_type
             }}</span>
-            <input v-else v-model="frameEditData.frame_type" />
+            <select v-else v-model="frameEditData.frame_type">
+              <option
+                v-for="type in frameTypes"
+                :key="type.value"
+                :value="type.code"
+              >
+                {{ type.value }}
+              </option>
+            </select>
           </td>
+
           <td>
             <span v-if="editingFrameId !== frame.id">{{ frame.price }}</span>
             <input v-else v-model="frameEditData.price" />
@@ -65,48 +75,19 @@
         </tr>
       </tbody>
     </table>
-
-    <!-- Add an update form for a selected frame -->
-    <div v-if="updatingFrame">
-      <h3>Update Frame</h3>
-      <div class="form-group">
-        <label for="updatedDescription">Description</label>
-        <input
-          type="text"
-          v-model="updatedDescription"
-          id="updatedDescription"
-          class="form-control"
-        />
-      </div>
-      <div class="form-group">
-        <label for="updatedFrameType">Frame Type</label>
-        <input
-          type="text"
-          v-model="updatedFrameType"
-          id="updatedFrameType"
-          class="form-control"
-        />
-      </div>
-      <div class="form-group">
-        <label for="updatedPrice">Price</label>
-        <input
-          type="number"
-          v-model="updatedPrice"
-          id="updatedPrice"
-          class="form-control"
-        />
-      </div>
-      <button @click="saveUpdatedFrame" class="btn btn-primary">Save</button>
-    </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
 import Swal from "sweetalert2";
+import AppHeaderAdmin from "@/components/AppHeaderAdmin.vue";
 
 export default {
-  name: "AppFrames",
+    name: "AppFrames",
+    components: {
+    AppHeaderAdmin,
+  },
   data() {
     return {
       frames: [],
@@ -115,11 +96,22 @@ export default {
       updatedFrameType: "",
       updatedPrice: null,
       editingFrameId: null,
+      frameTypes: [],
       frameEditData: {}, // Temporary storage for edited data
     };
   },
   created() {
     this.fetchFrames();
+  },
+  mounted() {
+    axios
+      .get("http://localhost:8000/api/frameTypes")
+      .then((response) => {
+        this.frameTypes = response.data;
+      })
+      .catch((error) => {
+        console.error("Error fetching frame types: ", error);
+      });
   },
   methods: {
     async fetchFrames() {
@@ -169,8 +161,9 @@ export default {
           frame_type: this.frameEditData.frame_type,
           price: this.frameEditData.price,
         };
+        console.log(updatedData);
         let response = await axios.put(
-          `http://localhost:8000/api/frames/update/${frameId}`,
+          `http://localhost:8000/api/frames/${frameId}`,
           updatedData
         );
         console.log(response);
@@ -181,6 +174,7 @@ export default {
 
         // Show a success message using SweetAlert2
         Swal.fire("Updated!", "The frame has been updated.", "success");
+        window.location.reload();
       } catch (error) {
         console.error(`Error updating frame with ID ${frame.id}:`, error);
 
@@ -195,8 +189,8 @@ export default {
     async deleteFrame(frameId) {
       try {
         // Make a DELETE request to the API endpoint to delete the frame
-        let response2 = await axios.get(
-          `http://localhost:8000/api/frames/delete/${frameId}`
+        let response2 = await axios.delete(
+          `http://localhost:8000/api/frames/${frameId}`
         );
         console.log(response2);
 

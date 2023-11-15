@@ -1,19 +1,19 @@
 <script>
 // import AppHome from "./components/AppHome.vue";
-import AppHeader from "./components/AppHeader.vue";
+// import AppHeader from "./components/AppHeader.vue";
 import "./styles.css";
 
 export default {
   name: "App",
   components: {
     // AppHome,
-    AppHeader,
+    // AppHeader,
   },
 };
 </script>
 
 <template>
-  <AppHeader />
+  <!-- <AppHeader /> -->
   <RouterView />
 </template>
 

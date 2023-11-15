@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import AppHome from "@/components/AppHome.vue";
+import AppAdminHome from "@/components/AppAdminHome.vue";
 // import AppHeader from "@/components/AppHeader.vue";
 import AppLogin from "@/components/AppLogin.vue";
 import AppRegister from "@/components/AppRegister.vue";
@@ -12,6 +13,8 @@ import AppFrameDesc from "@/components/AppFrameDesc.vue";
 import AppCustomize from "@/components/AppCustomize.vue";
 import AppUploadArt from "@/components/AppUploadArt.vue";
 import AppUploadFrame from "@/components/AppUploadFrame.vue";
+import AppPicturesGrid from "@/components/AppPicturesGrid.vue";
+import AppFramesGrid from "@/components/AppFramesGrid.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -20,6 +23,11 @@ const router = createRouter({
       path: "/",
       name: "Home",
       component: AppHome,
+    },
+    {
+      path: "/adminhome",
+      name: "AdminHome",
+      component: AppAdminHome,
     },
     {
       path: "/login",
@@ -66,6 +74,7 @@ const router = createRouter({
       path: "/customize",
       name: "Customize",
       component: AppCustomize,
+      props: true,
     },
     {
       path: "/uploadArt",
@@ -76,6 +85,16 @@ const router = createRouter({
       path: "/uploadFrame",
       name: "UploadFrame",
       component: AppUploadFrame,
+    },
+    {
+      path: "/pictures",
+      name: "AppPicturesGrid",
+      component: AppPicturesGrid,
+    },
+    {
+      path: "/framesgrid",
+      name: "AppFramesGrid",
+      component: AppFramesGrid,
     },
   ],
 });

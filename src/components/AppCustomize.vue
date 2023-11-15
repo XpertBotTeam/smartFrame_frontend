@@ -1,40 +1,30 @@
 <template>
+  <AppHeader />
   <div>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <input type="file" @change="handleFileUpload" />
-          <img :src="imageUrl" alt="Uploaded Image" class="img-thumbnail" />
-        </div>
-        <div class="col-md-6">
-          <!-- Framing Options (add Bootstrap-styled options here) -->
-        </div>
-      </div>
-    </div>
-    <RecommendationBox :recommendations="recommendations" />
+    <AppPicturesGrid @customize-item="onCustomizeItem" />
+    <AppCustomize :price="selectedPrice" />
   </div>
 </template>
 
 <script>
+import AppPicturesGrid from "./AppPicturesGrid.vue";
+import AppCustomize from "./AppCustomize.vue";
+
+import AppHeader from "@/components/AppHeader.vue";
 export default {
+  components: {
+    AppHeader,
+    AppPicturesGrid,
+    AppCustomize,
+  },
   data() {
     return {
-      imageUrl: '',
-      recommendations: [],
+      selectedPrice: null,
     };
   },
   methods: {
-    handleFileUpload(event) {
-      // Handle image upload
-      const file = event.target.files[0];
-      this.imageUrl = URL.createObjectURL(file);
-      
-      // Fetch recommendations (you'll need to implement this)
-      this.fetchRecommendations();
-    },
-    fetchRecommendations() {
-      // Use Axios to fetch recommendations (e.g., from an API)
-      // Update this.recommendations with the fetched data
+    onCustomizeItem(price) {
+      this.selectedPrice = price;
     },
   },
 };

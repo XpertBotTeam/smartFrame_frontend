@@ -1,4 +1,5 @@
 <template>
+  <AppHeader />
   <div class="frame-details">   
     <div>
       <img :src="frame.image_path" class="m-4" alt="frame" height="150" width="150">
@@ -12,8 +13,12 @@
 
 <script>
 import axios from 'axios';
-
+import AppHeader from "@/components/AppHeader.vue";
 export default {
+  components: {
+    // AppHome,
+    AppHeader,
+  },
   name: 'AppFrameDesc',
   data() {
     return {

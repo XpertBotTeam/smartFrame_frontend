@@ -1,4 +1,5 @@
 <template>
+  <AppHeaderAdmin />
     <div class="d-flex justify-content-center">
         <div class="border p-3" style="background-color: #ffffff;">
           <div class="form-group">
@@ -45,8 +46,11 @@
   
   <script>
 import axios from 'axios';
-
+import AppHeaderAdmin from "@/components/AppHeaderAdmin.vue";
 export default {
+  components: {
+    AppHeaderAdmin,
+  },
   data() {
     return {
       selectedFile: null,

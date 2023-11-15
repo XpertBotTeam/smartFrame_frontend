@@ -18,18 +18,20 @@ export default {
   methods: {
     async register() {
       try {
-        let response = await axios.post(
-          "http://localhost:8000/api/register",
-          {
-            first_name: this.firstname,
-            last_name: this.lastname,
-            email: this.email,
-            password: this.password,
-            confirm_password: this.confirmpassword,
-          }
-        );
+        let response = await axios.post("http://localhost:8000/api/register", {
+          first_name: this.firstname,
+          last_name: this.lastname,
+          email: this.email,
+          password: this.password,
+          confirm_password: this.confirmpassword,
+        });
         if (response.data.status === true) {
           console.log("Request Succeeded");
+          Swal.fire({
+            icon: "success",
+            title: "Registered Successfully",
+            text: "You have been registered successfully!",
+          });
           this.$router.push("/login");
         } else if (response.data.status === false) {
           console.log("Request Failed:", response.data.message);

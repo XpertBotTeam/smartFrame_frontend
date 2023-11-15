@@ -1,5 +1,6 @@
 <script>
 import axios from "axios";
+import Swal from "sweetalert2";
 
 export default {
   name: "AppLogin",
@@ -13,22 +14,44 @@ export default {
   methods: {
     async login() {
       try {
-        let response = await axios.post(
-          "http://localhost:8000/api/login",
-          {
-            email: this.email,
-            password: this.password,
-          }
-        );
-        if (response.status === 200) {
+        let response = await axios.post("http://localhost:8000/api/login", {
+          email: this.email,
+          password: this.password,
+        });
+        if (response.data.success == true) {
+          var uname = response.data.first_name;
           console.log(response);
+
           localStorage.setItem(
             "user-info",
             JSON.stringify(response.data.success)
           );
-          this.$router.push("/");
+          console.log(response.data.user_role);
+          if (response.data.user_role === "client") {
+            this.$router.push({
+              path: "/",
+              query: { name: uname },
+            });
+          } else if (response.data.user_role === "admin") {
+            this.$router.push({
+              path: "/adminhome",
+              query: { name: uname },
+            });
+          }
+          Swal.fire({
+            icon: "success",
+            title: "Login Successful",
+            text: "You have been logged in successfully!",
+          });
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Login Failed",
+            text: "An error occurred during login. Please try again.",
+          });
         }
         console.log(response.data.success);
+        console.log(response.data.first_name);
       } catch (error) {
         console.log(error);
       }

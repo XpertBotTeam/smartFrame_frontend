@@ -1,6 +1,6 @@
 <script>
 export default {
-  name: "AppHeader",
+  name: "AppHeaderAdmin",
   first_name: "TargetPage",
 };
 </script>
@@ -15,24 +15,24 @@ export default {
           >
         </li> -->
         <li class="nav-item">
-          <Router-link class="nav-link" aria-current="page" to="/pictures"
+          <Router-link class="nav-link" aria-current="page" to="/gallery"
             >GALLERY</Router-link
           >
         </li>
         <li class="nav-item">
-          <Router-link class="nav-link" aria-current="page" to="/framesgrid"
+          <Router-link class="nav-link" aria-current="page" to="/frames"
             >FRAMES</Router-link
           >
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <Router-link class="nav-link" aria-current="page" to="/customize"
             >CUSTOMIZE</Router-link
           >
-        </li>
+        </li> -->
       </ul>
       <Router-link
         class="navbar-brand d-flex justify-content-center align-items-center vw-100"
-        to="/"
+        to="/adminhome"
         ><img width="160" align="center" src="@/assets/logo.jpg"
       /></Router-link>
       <button
@@ -47,18 +47,18 @@ export default {
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
+        <ul class="navbar-nav d-flex">
+          <!-- <li class="nav-item">
             <Router-link class="nav-link" aria-current="page" to="/contact"
               >CONTACT</Router-link
             >
-          </li>
+          </li> -->
           <!-- <li class="nav-item">
             <Router-link class="nav-link" aria-current="page" to="/cart"
               >CART</Router-link
             >
           </li> -->
-          <li class="nav-item">
+          <li class="nav-item w-25">
             <div v-if="$route.query.name">
               Welcome, {{ $route.query.name }}
               <Router-link class="nav-link" aria-current="page" to="/"

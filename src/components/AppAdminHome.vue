@@ -1,5 +1,5 @@
 <template>
-  <AppHeader />
+  <AppHeaderAdmin />
   <div class="slideshow light-brown-background">
     <div class="slideshow-container">
       <img
@@ -76,11 +76,10 @@
 </template>
 
 <script>
-import AppHeader from "@/components/AppHeader.vue";
+import AppHeaderAdmin from "@/components/AppHeaderAdmin.vue";
 export default {
   components: {
-    // AppHome,
-    AppHeader,
+    AppHeaderAdmin,
   },
   data() {
     return {

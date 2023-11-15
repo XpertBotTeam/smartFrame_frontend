@@ -1,5 +1,6 @@
 <template>
-  <div class="container my-5">
+  <AppHeader />
+  <div class="container my-5 with-background">
     <h1>About Us</h1>
     <p>
       We are a passionate team dedicated to providing exceptional services and products.
@@ -8,34 +9,38 @@
     <div class="row">
       <!-- Right column for Review and Feedback -->
       <div class="col-md-6">
-        <div class="col-md-8">
-          <h2>Reviews and Feedback</h2>
-          <p>Share your thoughts with us:</p>
+        <div class="col-md-12">
+          <div class="bg-light">
+            <h2>Reviews and Feedback</h2>
+            <p>Share your thoughts with us:</p>
 
-          <!-- Feedback form -->
-          <form @submit.prevent="submitFeedback">
-            <div class="form-group">
-              <label for="name"><strong>Your Name</strong></label>
-              <input type="text" id="name" v-model="formData.name" class="form-control" required>
-            </div>
-            <div class="form-group">
-              <label for="comment"><strong>Your Comment</strong></label>
-              <textarea id="comment" v-model="formData.comment" class="form-control" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary mt-3">Submit</button>
-          </form>
+            <!-- Feedback form -->
+            <form @submit.prevent="submitFeedback">
+              <div class="form-group">
+                <label for="name"><strong>Your Name</strong></label>
+                <input type="text" id="name" v-model="formData.name" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label for="comment"><strong>Your Comment</strong></label>
+                <textarea id="comment" v-model="formData.comment" class="form-control" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary mt-3">Submit</button>
+            </form>
+          </div>
         </div>
 
         <!-- Contact information -->
-        <h2>Contact Information</h2>
-        <p>
-          Feel free to get in touch with us:
-          <ul>
-            <li><Strong>Email:</Strong> pierreencadrement@info.com</li>
-            <li><Strong>Phone:</Strong> +961 01 327 652</li>
-            <li><Strong>Address:</Strong> Elias Faraj Basil, Beirut, Lebanon</li>
-          </ul>
-        </p>
+        <div class="bg-light">
+          <h2 class="mt-5">Contact Information</h2>
+          <p>
+            Feel free to get in touch with us:
+            <ul>
+              <li><Strong>Email:</Strong> pierreencadrement@info.com</li>
+              <li><Strong>Phone:</Strong> +961 01 327 652</li>
+              <li><Strong>Address:</Strong> Elias Faraj Basil, Beirut, Lebanon</li>
+            </ul>
+          </p>
+        </div>
       </div>
 
       <!-- Left column for Location -->
@@ -45,7 +50,7 @@
         <button @click="showLocation" class="btn btn-primary">Locate Us</button>
 
         <!-- Hidden iframe to embed the Google Maps location -->
-        <div v-if="displayLocation" class="embed-responsive embed-responsive-16by9">
+        <div v-if="displayLocation" class="embed-responsive embed-responsive-16by9 mt-4">
           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3312.090549557547!2d35.52235701133795!3d33.88732172630892!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151f17a02957897f%3A0x980cc70249b0f08e!2sPierre%20Habib%20Encadrement!5e0!3m2!1sen!2slb!4v1697974163480!5m2!1sen!2slb" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </div>
@@ -55,8 +60,13 @@
 
 <script>
 import axios from 'axios';
+import AppHeader from "@/components/AppHeader.vue";
 
 export default {
+  components: {
+    // AppHome,
+    AppHeader,
+  },
   data() {
     return {
       displayLocation: false,
@@ -94,3 +104,11 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+  .with-background {
+    
+    background-size: cover;
+    background-position: center;
+  }
+</style>
