@@ -52,7 +52,7 @@ export default {
     },
     async fetchData() {
       try {
-        let response = await axios.get("http://sfa.xpertbotacademy.online/api/pictures");
+        let response = await axios.get("https://sfa.xpertbotacademy.online/api/pictures");
         this.items = response.data;
         console.log(response);
       } catch (error) {

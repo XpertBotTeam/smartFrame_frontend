@@ -40,7 +40,7 @@ export default {
       try {
         console.log(frameId);
         let response = await axios.get(
-          `http://sfa.xpertbotacademy.online/api/frame/${frameId}`
+          `https://sfa.xpertbotacademy.online/api/frame/${frameId}`
         );
         this.frame = response.data;
         console.log(response.data);

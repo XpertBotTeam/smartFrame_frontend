@@ -105,7 +105,7 @@ export default {
   },
   mounted() {
     axios
-      .get("http://sfa.xpertbotacademy.online/api/frameTypes")
+      .get("https://sfa.xpertbotacademy.online/api/frameTypes")
       .then((response) => {
         this.frameTypes = response.data;
       })
@@ -116,7 +116,7 @@ export default {
   methods: {
     async fetchFrames() {
       try {
-        let response = await axios.get("http://sfa.xpertbotacademy.online/api/frames");
+        let response = await axios.get("https://sfa.xpertbotacademy.online/api/frames");
         this.frames = response.data;
         console.log(response);
       } catch (error) {
@@ -163,7 +163,7 @@ export default {
         };
         console.log(updatedData);
         let response = await axios.put(
-          `http://sfa.xpertbotacademy.online/api/frames/${frameId}`,
+          `https://sfa.xpertbotacademy.online/api/frames/${frameId}`,
           updatedData
         );
         console.log(response);
@@ -190,7 +190,7 @@ export default {
       try {
         // Make a DELETE request to the API endpoint to delete the frame
         let response2 = await axios.delete(
-          `http://sfa.xpertbotacademy.online/api/frames/${frameId}`
+          `https://sfa.xpertbotacademy.online/api/frames/${frameId}`
         );
         console.log(response2);
 

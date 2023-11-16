@@ -38,7 +38,7 @@ export default {
       try {
         console.log(galleryId);
         let response = await axios.get(
-          `http://sfa.xpertbotacademy.online/api/picture/${galleryId}`
+          `https://sfa.xpertbotacademy.online/api/picture/${galleryId}`
         );
         this.gallery = response.data;
         let url = this.gallery.image_path;
