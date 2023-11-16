@@ -1,28 +1,31 @@
 <template>
   <AppHeader />
-  <div class="frame-details">   
-    <div>
-      <img :src="frame.image_path" class="m-4" alt="frame" height="150" width="150">
-      <p>Description: {{ frame.description }}</p>
-      <p>Type: {{ frame.frame_type }}</p>
-      <p>Price: {{ frame.price }}</p>
-      <!-- Display other frame details here -->
+  <div class="container mt-4">
+    <div class="card">
+      <h5 class="card-title">Picture Details</h5>
+      <img :src="url" class="card-img-top" alt="gallery" />
+      <div class="card-body">
+        <p class="card-text">Description: {{ gallery.description }}</p>
+        <p class="card-text">Type: {{ gallery.picture_type }}</p>
+        <p class="card-text">Price: {{ gallery.price }}</p>
+        <!-- Add other details here -->
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 import AppHeader from "@/components/AppHeader.vue";
 export default {
   components: {
     // AppHome,
     AppHeader,
   },
-  name: 'AppFrameDesc',
+  name: "AppGalleryDesc",
   data() {
     return {
-      frame: {},
+      gallery: {},
     };
   },
   created() {
@@ -30,19 +33,23 @@ export default {
   },
   methods: {
     async fetchFrameDetails() {
-      const frameId = this.$route.params.id;
+      const galleryId = this.$route.params.id;
+      console.log(galleryId);
       try {
-        console.log(frameId);
-        let response = await axios.get(`http://localhost:8000/api/frame/${frameId}`);
-        this.frame = response.data;
-        console.log(response.data);
+        console.log(galleryId);
+        let response = await axios.get(
+          `http://sfa.xpertbotacademy.online/api/picture/${galleryId}`
+        );
+        this.gallery = response.data;
+        let url = this.gallery.image_path;
+        this.url = url.replace("/public", "");
+        console.log(this.url);
       } catch (error) {
-        console.error('Error fetching frame details:', error);
+        console.error("Error fetching picture details:", error);
       }
     },
   },
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

@@ -14,7 +14,7 @@ export default {
   methods: {
     async login() {
       try {
-        let response = await axios.post("http://localhost:8000/api/login", {
+        let response = await axios.post("http://sfa.xpertbotacademy.online/api/login", {
           email: this.email,
           password: this.password,
         });

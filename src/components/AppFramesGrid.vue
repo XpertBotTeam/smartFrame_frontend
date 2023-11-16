@@ -33,7 +33,7 @@ export default {
   methods: {
     async fetchData() {
       try {
-        let response = await axios.get("http://localhost:8000/api/frames");
+        let response = await axios.get("http://sfa.xpertbotacademy.online/api/frames");
         this.items = response.data;
         console.log(response);
       } catch (error) {

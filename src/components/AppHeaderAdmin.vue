@@ -58,17 +58,18 @@ export default {
               >CART</Router-link
             >
           </li> -->
-          <li class="nav-item w-25">
-            <div v-if="$route.query.name">
-              Welcome, {{ $route.query.name }}
+
+          <div v-if="$route.query.name">
+            <li class="nav-item">
               <Router-link class="nav-link" aria-current="page" to="/"
                 >LOG OUT</Router-link
               >
-            </div>
-            <Router-link v-else class="nav-link" aria-current="page" to="/login"
-              >LOGIN</Router-link
-            >
-          </li>
+            </li>
+            <li class="nav-item">Welcome, {{ $route.query.name }}</li>
+          </div>
+          <Router-link v-else class="nav-link" aria-current="page" to="/login"
+            >LOGIN</Router-link
+          >
 
           <!-- <li class="nav-item">
           <a class="nav-link disabled" aria-disabled="true">Disabled</a>

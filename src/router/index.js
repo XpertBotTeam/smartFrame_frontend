@@ -50,8 +50,9 @@ const router = createRouter({
       component: AppGallery,
     },
     {
-      path: "/gallery/id",
+      path: "/gallery/:id",
       name: "GalleryDesc",
+      props: true,
       component: AppGalleryDesc,
     },
     {

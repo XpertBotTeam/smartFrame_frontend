@@ -3,7 +3,7 @@
     <div class="d-flex justify-content-center">
         <div class="border p-3" style="background-color: #ffffff;">
           <div class="form-group">
-            <label for="fileInput" style="color: #FFF;">Upload Image:</label>
+            <label for="fileInput" style="color: #000000;">Upload Image:</label>
             <div class="custom-file">
               <input type="file" ref="fileInput" @change="handleFileChange" accept="image/*" class="custom-file-input" id="fileInput">
               <label class="custom-file-label" for="fileInput">{{ selectedFile ? ' ' : ' ' }}</label>
@@ -12,11 +12,11 @@
     
           <!-- Display the selected image -->
           <div v-if="selectedFile" class="mt-3">
-            <label style="color: #FFF;">Selected Image Preview:</label>
+            <label style="color: #000000;">Selected Image Preview:</label>
             <img :src="selectedImage" alt="Selected Image" style="max-width: 100%;">
           </div>
         <div class="form-group">
-          <label for="imageType" style="color: #FFF;">Image Type:</label>
+          <label for="imageType" style="color: #000000;">Image Type:</label>
           <div class="input-group">
             <select v-model="imageType" id="imageType" class="custom-select">
               <option value="1">Digital</option>
@@ -26,18 +26,18 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="imageDescription" style="color: #FFF;">Image Description:</label>
-          <input type="text" v-model="imageDescription" id="imageDescription" class="form-control" placeholder="Image Description" style="background-color: #FFF; color: #8B4513;">
+          <label for="imageDescription" style="color: #000000;">Image Description:</label>
+          <input type="text" v-model="imageDescription" id="imageDescription" class="form-control" placeholder="Image Description" style="background-color: #000000; color: #8B4513;">
         </div>
         <div class="form-group">
-          <label for="imagePrice" style="color: #FFF;">Image Price:</label>
+          <label for="imagePrice" style="color: #000000;">Image Price:</label>
           <input type="number" v-model="imagePrice" id="imagePrice" class="form-control" placeholder="Image Price" style="background-color: #FFF; color: #8B4513;">
         </div>
         <button @click="uploadImage" class="btn btn-primary mt-3" style="background-color: #8B4513; color: #FFF;">Upload Image</button>
   
         <!-- Display the uploaded image -->
         <div v-if="uploadedImage" class="mt-3">
-          <label style="color: #FFF;">Uploaded Image:</label>
+          <label style="color: #000000;">Uploaded Image:</label>
           <img :src="uploadedImage" alt="Uploaded Image" style="max-width: 100%;">
         </div>
       </div>
@@ -75,7 +75,7 @@ export default {
 
       console.log(formData);
 
-      axios.post('http://localhost:8000/api/addFrame', formData, {
+      axios.post('http://sfa.xpertbotacademy.online/api/addFrame', formData, {
         headers: {
           'Content-Type': 'multipart/form-data;boundary=<calculated when request is sent>',
         },
